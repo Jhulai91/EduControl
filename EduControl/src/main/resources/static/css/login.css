@@ -1,0 +1,31 @@
+/* Fondo */
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+}
+
+/* Card */
+.login-card {
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+
+/* Inputs centrados */
+.form-control {
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Botón */
+.btn-custom {
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    transform: scale(1.03);
+}

@@ -1,0 +1,36 @@
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #343a40;
+}
+
+.sidebar .nav-link {
+    color: #ccc;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background: #495057;
+    color: #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+/* Contenido */
+.content {
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Cards */
+.dashboard-card {
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}

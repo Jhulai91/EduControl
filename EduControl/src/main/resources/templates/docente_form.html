@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Docente</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+
+<body>
+
+
+<div class="d-flex">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar p-3">
+
+        <h4 class="text-white text-center mb-4">EduControl</h4>
+
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">🏠 Inicio</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/usuario/listar">👤 Usuarios</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">🎓 Estudiantes</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">📚 Cursos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">🧾 Matrículas</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/vistadocente/listar}">👨‍🏫 Docentes</a>
+            </li>
+            
+             <li class="nav-item">
+                <a href="/logout" class="btn btn-danger btn-sm">Cerrar sesión</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registrar Docente</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form th:action="@{/vistadocente/guardar-form}" 
+                  th:object="${docente}" 
+                  method="post">
+
+                <!-- USUARIO -->
+                <h5 class="mb-3">Datos del Usuario</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control"
+                               th:field="*{usuario.usuarioNick}" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control"
+                               th:field="*{usuario.usuarioPassword}" required>
+                    </div>
+                    
+                  <div class="col-md-4 mb-3">
+    <label class="form-label">Rol</label>
+    <select class="form-select" th:field="*{usuario.rolusuario.idRol}">
+        <option value="">Seleccione</option>
+        <option th:each="rol : ${roles}"
+                th:value="${rol.idRol}"
+                th:text="${rol.rolNombre}">
+        </option>
+    </select>
+</div>
+                    
+                    
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Estado</label>
+                        <select class="form-select" th:field="*{usuario.usuarioEstado}" required>
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- DOCENTE -->
+                <h5 class="mb-3">Datos del Docente</h5>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Cédula</label>
+                        <input type="text" class="form-control"
+                               th:field="*{docenteCedula}" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" class="form-control"
+                               th:field="*{docenteNombres}" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control"
+                               th:field="*{docenteApellidos}" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" class="form-control"
+                               th:field="*{docenteTelefono}" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control"
+                               th:field="*{docenteEmail}" required>
+                    </div>
+                    
+                    <div class="col-md-4 mb-3">
+    <label class="form-label">Especialización</label>
+
+    <select class="form-select" th:field="*{especializacion.idEspecializacion}" required>
+        
+        <option value="">-- Seleccione --</option>
+
+        <option th:each="e : ${especializaciones}"
+                th:value="${e.idEspecializacion}"
+                th:text="${e.especializacionNombre}">
+        </option>
+
+    </select>
+</div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Estado</label>
+                        <select class="form-select" th:field="*{docenteEstado}">
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">
+                        💾 Guardar
+                    </button>
+
+                    <a th:href="@{/vistadocente/listar}" 
+                       class="btn btn-secondary">
+                        ⬅ Volver
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
