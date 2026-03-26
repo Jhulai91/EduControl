@@ -17,10 +17,15 @@ public class LoginController {
 	
 	 @Autowired
 	    private UsuarioService usuarioService;
+	 
+	 @GetMapping("/")
+	 public String inicio() {
+	     return "redirect:/login";
+	 }
 
 	    @GetMapping("/login")
 	    public String mostrarLogin() {
-	        return "login"; // carga login.html
+	        return "login"; 
 	    }
 
 	    @PostMapping("/login")
